@@ -11,6 +11,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Edit Page</title>
+        <s:head/>
     </head>
     <body>
         <s:if test="%{!#session.USER.fullname.isEmpty()}">
@@ -26,7 +27,8 @@
             <s:textfield label="Price" name="price" value="%{menu.price}"/>
             <s:combobox label="Category" name="category" list="categoryList" value="%{menu.category}"/>
             <s:textfield label="Quantity" name="quantity" value="%{menu.quantity}"/>
-            <s:select label="Status" list="{'active', 'inactive'}"/>
+            <s:select label="Status" name="status" list="{'active', 'inactive'}" value="%{menu.status}"/>
+            <s:textfield name="searchValue" value="%{lastSearchValue}"/>
             <s:submit value="Update"/>
             <s:reset value="Reset"/>
         </s:form>

@@ -5,12 +5,10 @@
  */
 package truongtn.filter;
 
-import com.sun.javafx.scene.control.skin.VirtualFlow;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.io.PrintWriter;
 import java.io.StringWriter;
-import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -132,9 +130,7 @@ public class AuthFilter implements Filter {
         if (resource.trim().isEmpty()) {
             chain.doFilter(request, response);
         } else if (session == null || session.getAttribute("USER") == null) {
-            System.out.println("Here2");
             if (user.contains(resource)) {
-                System.out.println("Here 2.1");
                 chain.doFilter(request, response);
             } else {
                 res.sendRedirect("notFoundPage.html");

@@ -16,8 +16,8 @@ import truongtn.menu.MenuService;
  */
 @ResultPath("/")
 @Results({
-    @Result(name = "success", type = "redirectAction", params = {"actionName", "search", "searchValue", "${lastSearchValue}"}),
-    @Result(name = "fail", location = "error.html")
+    @Result(name = "success", type = "redirectAction", params = {"actionName", "find", "searchValue", "${lastSearchValue}"}),
+    @Result(name = "fail", type = "redirect", location = "error.html")
 })
 public class RemoveAction {
     private String pk;

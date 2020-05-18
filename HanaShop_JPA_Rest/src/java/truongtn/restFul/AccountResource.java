@@ -44,4 +44,16 @@ public class AccountResource {
         return acc;
     }
 
+    @Path("/registerAnAccount")
+    @POST
+    @Produces(MediaType.TEXT_PLAIN)
+    public String createAnAccount(Account account){
+        AccountBLO blo = new AccountBLO();
+        boolean result = blo.registerAnAccount(account);
+        
+        if(result){
+            return "true";
+        }
+        return "false"; 
+    }
 }

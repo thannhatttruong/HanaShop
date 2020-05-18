@@ -13,8 +13,10 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.client.Entity;
 import javax.ws.rs.client.Invocation;
 import javax.ws.rs.client.WebTarget;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 /**
@@ -89,6 +91,7 @@ public class MenuService {
         
         try {
             result = res.readEntity(String.class);
+            System.out.println("Resutl: " +result);
             if(!result.trim().isEmpty()){
                 itemList = new ArrayList<>();
                 itemList = gson.fromJson(result, menuListType);
@@ -186,5 +189,33 @@ public class MenuService {
             System.out.println("Error at getAllCategory method in MeneService class: " + e.getMessage());
         }
         return categoryList;
-    }  
+    } 
+    
+    public boolean updateAnItem(MenuDTO menu){
+        String updateUrl = menuServiceUrl + "/updateAnItem";
+        uri = URI.create(updateUrl);
+        client = ClientBuilder.newClient();
+        webTarget = client.target(uri);
+        invocationBuilder = webTarget.request();
+        res = invocationBuilder.put(Entity.entity(menu, MediaType.APPLICATION_JSON));
+        boolean update = false;
+        try {
+            result = res.readEntity(String.class);
+            update = Boolean.parseBoolean(result);
+            
+        } catch (Exception e) {
+            System.out.println("Error at updateAnItem method in MenuService class: " + e.getMessage());
+        }
+        return update;
+    }
+    
+//    public static void main(String[] args) {
+//        MenuService menuService = new MenuService();
+//        MenuDTO menu = new MenuDTO("3", "Noodle", null, Long.getLong("25000"), "food", 3, "inactive");
+//        if(menuService.updateAnItem(menu)){
+//            System.out.println("Successfully");
+//        }else{
+//            System.out.println("Fail sml");
+//        }
+//    }
 }

@@ -6,12 +6,13 @@
 package truongtn.restFul;
 
 import com.google.gson.Gson;
-import java.util.Arrays;
 import java.util.List;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Produces;
 import javax.ws.rs.GET;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
@@ -101,6 +102,19 @@ public class MenuResource {
         List<String> result = blo.getAllCategory();
         
         return new Gson().toJson(result);
+    }
+    
+    
+    @Path("/updateAnItem")
+    @PUT
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.TEXT_PLAIN)
+    public String updateAnItem(Menu menu){
+        MenuBLO blo = new MenuBLO();
+        if(blo.updateAnItem(menu)){
+            return "true";
+        }
+        return "false";
     }
     
 }

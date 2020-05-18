@@ -5,12 +5,9 @@
  */
 package truongtn.action;
 
-import com.opensymphony.xwork2.ActionContext;
 import java.util.List;
-import java.util.Map;
 import org.apache.struts2.convention.annotation.Result;
 import org.apache.struts2.convention.annotation.ResultPath;
-import truongtn.account.AccountDTO;
 import truongtn.menu.MenuDTO;
 import truongtn.menu.MenuService;
 

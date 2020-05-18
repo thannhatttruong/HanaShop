@@ -6,21 +6,41 @@
 package truongtn.menu;
 
 import java.io.Serializable;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  *
  * @author truongtn
  */
-public class MenuDTO implements Serializable{
+public class MenuDTO implements Serializable {
+
     private String foodId;
     private String name;
     private byte[] image;
-    private Long price;
+    private int price;
     private String category;
     private int quantity;
     private String updateDate;
     private String status;
+
     public MenuDTO() {
+    }
+
+    public MenuDTO(String foodId, String name, byte[] image, int price, String category, int quantity, String status) {
+        this.foodId = foodId;
+        this.name = name;
+        this.image = image;
+        this.price = price;
+        this.category = category;
+        this.quantity = quantity;
+        this.status = status;
+        
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        Date date = new Date();
+        this.updateDate = dateFormat.format(date);
+
     }
 
     /**
@@ -68,14 +88,14 @@ public class MenuDTO implements Serializable{
     /**
      * @return the price
      */
-    public Long getPrice() {
+    public int getPrice() {
         return price;
     }
 
     /**
      * @param price the price to set
      */
-    public void setPrice(Long price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 
@@ -133,5 +153,5 @@ public class MenuDTO implements Serializable{
      */
     public void setStatus(String status) {
         this.status = status;
-    } 
+    }
 }

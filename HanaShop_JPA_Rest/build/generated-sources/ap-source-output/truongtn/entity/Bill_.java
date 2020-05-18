@@ -8,7 +8,7 @@ import javax.persistence.metamodel.StaticMetamodel;
 import truongtn.entity.Account;
 import truongtn.entity.Ordered;
 
-@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2020-05-06T17:26:38")
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2020-05-15T14:44:00")
 @StaticMetamodel(Bill.class)
 public class Bill_ { 
 

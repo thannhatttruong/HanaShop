@@ -35,6 +35,7 @@
                         <th>Price</th>
                         <th>Quantity</th>
                         <th>Update Date</th>
+                        <th>Status</th>
                         <th>Delete</th>
                         <th>Update</th>
                     </tr>
@@ -59,6 +60,9 @@
                             </td>
                             <td>
                                 <s:property value="quantity"/>
+                            </td>
+                            <td>
+                                <s:property value="status"/>
                             </td>
                             <td>
                                 <s:property value="updateDate"/>

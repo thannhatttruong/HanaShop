@@ -139,12 +139,37 @@ public class MenuBLO implements Serializable{
         }
         return result;
     }
-    public static void main(String[] args){
-        MenuBLO blo = new MenuBLO();
-        List<String> list = blo.getAllCategory();
-        for (String list1 : list) {
-            System.out.println("Category name: " + list1);
+    
+    public boolean updateAnItem(Menu menu){
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+        String jsql = "Update Menu m set m.name = :name, m.price = :price, m.category = :category, m.quantity = :quantity, m.status = :status, m.updateDate = :updateDate Where m.foodId = :foodId";
+        Query query = em.createQuery(jsql);
+        query.setParameter("name", menu.getName());
+        query.setParameter("price", menu.getPrice());
+        query.setParameter("category", menu.getCategory());
+        query.setParameter("quantity", menu.getQuantity());
+        query.setParameter("status", menu.getStatus());
+        query.setParameter("updateDate", menu.getUpdateDate());
+        query.setParameter("foodId", menu.getFoodId());
+        
+        boolean result = false;
+        try {
+            result = query.executeUpdate() > 0;
+            em.getTransaction().commit();
+        } catch (Exception e) {
+            System.out.println("Error at updateAnItem method in MenuBLO class: " + e.getMessage());
         }
         
+        return result;
     }
+    
+//    public static void main(String[] args){
+//        MenuBLO blo = new MenuBLO();
+//        List<String> list = blo.getAllCategory();
+//        for (String list1 : list) {
+//            System.out.println("Category name: " + list1);
+//        }
+//        
+//    }
 }
